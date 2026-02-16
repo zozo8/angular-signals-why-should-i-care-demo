@@ -1,0 +1,15 @@
+<h2>2. RxJS — subscription leak demo</h2>
+
+<div style="margin-top: 16px;">
+  <div><b>Safe counter:</b> {{ safeCounter }}</div>
+  <div><b>Leaky counter:</b> {{ leakyCounter }}</div>
+</div>
+
+<div style="margin-top: 16px;">
+  <button (click)="increment()">Increment</button>
+</div>
+
+<p style="margin-top: 16px;">
+  Navigate away and back, then click increment again.
+  The leaky counter will increase faster.
+</p>
