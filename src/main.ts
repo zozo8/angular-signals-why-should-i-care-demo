@@ -35,6 +35,18 @@ const routes: Routes = [
         (m) => m.SignalsDemoComponent
       ),
   },
+  {
+    path: '4-service-based',
+    loadComponent: () =>
+      import('./demos/4-signal-store/service-based.component')
+        .then(m => m.ServiceBasedComponent),
+  },
+  {
+    path: '4-store-based',
+    loadComponent: () =>
+      import('./demos/4-signal-store/store-based.component')
+        .then(m => m.StoreBasedComponent),
+  },
 ];
 
 @Component({

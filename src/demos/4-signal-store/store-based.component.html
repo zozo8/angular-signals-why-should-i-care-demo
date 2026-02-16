@@ -1,0 +1,27 @@
+<h2>Store-based demo (Signal Store)</h2>
+
+<button (click)="load()">Load cart</button>
+
+<span *ngIf="store.loading()" style="margin-left: 12px; font-weight: 700;">
+  Loading...
+</span>
+
+<hr />
+
+<div>
+  <div><b>Fetched at:</b> {{ store.fetchedAt() || "-" }}</div>
+</div>
+
+<div *ngIf="store.entities().length > 0; else empty" style="margin-top: 12px;">
+  <ul>
+    <li *ngFor="let item of store.entities()">
+      {{ item.name }} — {{ item.price }}
+    </li>
+  </ul>
+
+  <p><b>Total:</b> {{ store.total() }}</p>
+</div>
+
+<ng-template #empty>
+  <p>No data yet.</p>
+</ng-template>
