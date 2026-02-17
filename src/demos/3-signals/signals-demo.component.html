@@ -1,0 +1,19 @@
+<h2>3. Signals — counter demo</h2>
+
+<div style="margin-top: 16px;">
+  <div><b>Counter:</b> {{ counter() }}</div>
+  <div><b>Doubled:</b> {{ doubled() }}</div>
+</div>
+
+<div style="margin-top: 16px;">
+  <button (click)="increment()">Increment</button>
+  <button (click)="reset()" style="margin-left: 8px;">Reset</button>
+</div>
+
+<div style="margin-top: 16px;">
+  <button (click)="incrementOther()">Increment other counter (effect demo)</button>
+</div>
+
+<p style="margin-top: 16px;">
+  No subscribe. No unsubscribe.
+</p>

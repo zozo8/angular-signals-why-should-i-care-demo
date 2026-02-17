@@ -1,0 +1,25 @@
+<h2>Service-based demo</h2>
+
+<button (click)="load()">Load cart</button>
+
+<span *ngIf="loading$ | async" style="margin-left: 12px; font-weight: 700;">
+    Loading...
+</span>
+
+<hr />
+
+<div *ngIf="cart$ | async as cart; else empty">
+    <div><b>Fetched at:</b> {{ cart.fetchedAt }}</div>
+
+    <ul>
+        <li *ngFor="let line of cart.lines">
+            {{ line.label }} — {{ line.price }}
+        </li>
+    </ul>
+
+    <p><b>Total:</b> {{ cart.total }}</p>
+</div>
+
+<ng-template #empty>
+    <p>No data yet.</p>
+</ng-template>

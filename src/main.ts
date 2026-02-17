@@ -1,11 +1,17 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideRouter, RouterOutlet, Routes } from '@angular/router';
+import {
+  provideRouter,
+  RouterOutlet,
+  RouterLink,
+  RouterLinkActive,
+  Routes,
+} from '@angular/router';
 import { Component } from '@angular/core';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'model',
+    redirectTo: '1-model',
     pathMatch: 'full',
   },
   {
@@ -15,27 +21,47 @@ const routes: Routes = [
         (m) => m.ModelDemoComponent
       ),
   },
+  {
+    path: '2-rxjs-leak',
+    loadComponent: () =>
+      import('./demos/2-rxjs-leak/rxjs-leak-demo.component').then(
+        (m) => m.RxjsLeakDemoComponent
+      ),
+  },
+  {
+    path: '3-signals',
+    loadComponent: () =>
+      import('./demos/3-signals/signals-demo.component').then(
+        (m) => m.SignalsDemoComponent
+      ),
+  },
+  {
+    path: '4-service-based',
+    loadComponent: () =>
+      import('./demos/4-signal-store/service-based.component')
+        .then(m => m.ServiceBasedComponent),
+  },
+  {
+    path: '4-store-based',
+    loadComponent: () =>
+      import('./demos/4-signal-store/store-based.component')
+        .then(m => m.StoreBasedComponent),
+  },
 ];
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
-  template: `
-    <div style="font-family: Arial, sans-serif; padding: 32px;">
-      <h1>Angular Signals — Why should I care?</h1>
-
-      <nav style="margin-top: 24px;">
-        <a routerLink="/1-model" style="font-size: 18px;">
-          1. Model-based state (baseline)
-        </a>
-      </nav>
-
-      <hr style="margin: 24px 0;" />
-
-      <router-outlet />
-    </div>
-  `,
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  templateUrl: "main.html",
+  styles: [
+    `
+      .active-link {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+    `,
+  ],
 })
 class AppComponent {}
 
