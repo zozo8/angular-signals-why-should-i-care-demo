@@ -1,0 +1,27 @@
+<h2>Promise-based demo (signals)</h2>
+
+<button (click)="loadSignals()">Load cart</button>
+
+<span *ngIf="loading()" style="margin-left: 12px; font-weight: 700;">
+  Loading...
+</span>
+
+<hr />
+
+<div>
+  <div><b>Fetched at:</b> {{ fetchedAt() || "-" }}</div>
+</div>
+
+<div *ngIf="items().length > 0; else empty" style="margin-top: 12px;">
+  <ul>
+    <li *ngFor="let item of items()">
+      {{ item.name }} — {{ item.price }}
+    </li>
+  </ul>
+
+  <p><b>Total:</b> {{ total() }}</p>
+</div>
+
+<ng-template #empty>
+  <p>No data yet.</p>
+</ng-template>

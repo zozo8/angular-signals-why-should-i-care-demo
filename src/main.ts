@@ -36,6 +36,18 @@ const routes: Routes = [
       ),
   },
   {
+    path: '4-promise-based',
+    loadComponent: () =>
+      import('./demos/4-signal-store/promise-based.component')
+        .then(m => m.PromiseBasedComponent),
+  },
+  {
+    path: '4-promise-based-signals',
+    loadComponent: () =>
+      import('./demos/4-signal-store/promise-based-signals.component')
+        .then(m => m.PromiseBasedComponent),
+  },
+  {
     path: '4-service-based',
     loadComponent: () =>
       import('./demos/4-signal-store/service-based.component')
